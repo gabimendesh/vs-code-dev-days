@@ -56,4 +56,4 @@ Caso utilize uma máquina do laboratório, procure preferencialmente trabalhar c
 
 Faça um fork deste repositório em sua conta pessoal.
 
-![Fork do projeto](img/01-fork.png)
+![Fork do projeto](img/fork-repo.png)
