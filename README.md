@@ -8,7 +8,7 @@ Acesse este conteúdo via QRCode e também nos apoiem 🙌, deixando um star ⭐
 Instrutores (links apontando para o LinkedIn, nos adicionem lá 😉):
 - Renato Groffe | [LinkedIn](https://www.linkedin.com/in/renatogroffe/) :: [GitHub](https://github.com/renatogroffe)
 - Milton Camara | [LinkedIn](https://www.linkedin.com/in/miltoncamara/) :: [GitHub](https://github.com/miltoncamara)
-- Carlos Machel | [LinkedIn](https://www.linkedin.com/in/carlosmachel/) :: [GitHub](github.com/carlosmachel)
+- Carlos Machel | [LinkedIn](https://www.linkedin.com/in/carlosmachel/) :: [GitHub](https://github.com/carlosmachel)
 - Alexandre Malavasi | [LinkedIn](https://www.linkedin.com/in/alexandremalavasi/) :: [GitHub](https://github.com/alexandremalavasi)
 - Thamirys Gameiro | [LinkedIn](https://www.linkedin.com/in/thamirys-gameiro/) :: [GitHub](https://github.com/ThamirysGameiro)
 - Laura de Alencar [LinkedIn](https://www.linkedin.com/in/lauralencarr/)
