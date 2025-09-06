@@ -11,7 +11,7 @@ Instrutores (links apontando para o LinkedIn, nos adicionem lá 😉):
 - Carlos Machel | [LinkedIn](https://www.linkedin.com/in/carlosmachel/) :: [GitHub](https://github.com/carlosmachel)
 - Alexandre Malavasi | [LinkedIn](https://www.linkedin.com/in/alexandremalavasi/) :: [GitHub](https://github.com/alexandremalavasi)
 - Thamirys Gameiro | [LinkedIn](https://www.linkedin.com/in/thamirys-gameiro/) :: [GitHub](https://github.com/ThamirysGameiro)
-- Laura de Alencar [LinkedIn](https://www.linkedin.com/in/lauralencarr/)
+- Laura de Alencar | [LinkedIn](https://www.linkedin.com/in/lauralencarr/)
 
 Algumas de nossas comunidades técnicas (links para Meetup e YouTube):
 - [.NET São Paulo](https://www.meetup.com/dotnet-Sao-Paulo/)
@@ -30,6 +30,7 @@ Referências utilizadas:
 - [Model Context Protocol](https://marketplace.visualstudio.com/vscode)
 - [Docker MCP Hub](https://hub.docker.com/mcp)
 - [APIsec University - Certificações online gratuitas](https://www.apisecuniversity.com/)
+- [Microsoft Learn MCP Server overview](https://learn.microsoft.com/en-us/training/support/mcp)
 
 ---
 
