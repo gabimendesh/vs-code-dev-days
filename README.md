@@ -39,7 +39,7 @@ Referências utilizadas:
 |----|----------------------------------------------------|--------------|-----------------------------------------------------------------------------|--------------------------|
 | 01 | Técnicas Essenciais para uso do GitHub Copilot no VS Code | 30–45 minutes| Comece a utilizar o GitHub Copilot no VS Code.                                | [**Slides**](/slides/VSCode_GitHubCopilot%20-%20pt-BR.pdf)            |
 | 02 | Community Session                                 | 30–45 minutes| Entendendo o que é MCP! | [**Slides**](/slides/MCP.pdf)  |
-| 03 | Workshop                                          | 60 minutes   | Develop skills with VS Code and GitHub Copilot.                             | [📁 **Content folder**](/content/) |
+| 03 | Workshop                                          | 60 minutes   | Develop skills with VS Code and GitHub Copilot.                             | [**Instruções**](Workshop/README.md) |
 
 
 ### 0. Pré-requisitos
