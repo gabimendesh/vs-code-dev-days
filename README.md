@@ -50,6 +50,12 @@ Em seguida crie sua conta no GitHub usando um e-mail e nome válidos, com o link
 
 Caso utilize uma máquina do laboratório, procure preferencialmente trabalhar com o GitHub logado em uma aba anônima!
 
+### Para seguir aprendendo
+
+|              Laboratório              |                       Tópicos ensinados                     |                     Objetivo de Aprendizagem                |
+| :------------------------------------: | :---------------------------------------------------------: | ----------------------------------------------------------- |
+| [Hands-on com o GitHub Copilot: Criando Planos de Estudo com IA utilizando Modelos do GitHub](https://github.com/microsoft/lab-study-app/tree/main/tutorial/translations/pt-br) | Use o GitHub Copilot e o GitHub Models para gerar planos de estudo personalizados em uma aplicação web baseada em Flask. | Crie e personalize uma ferramenta de planejamento de estudos com IA usando o GitHub Copilot e o GitHub Models. Configure uma aplicação Flask, desenvolva prompts eficazes para criar trilhas de aprendizado personalizadas e incorpore testes de acessibilidade utilizando modos de chat personalizados. |
+
 ---
 
 ### 1. Preparando seu ambiente para testes
