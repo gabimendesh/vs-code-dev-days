@@ -1,6 +1,8 @@
 # vs-code-dev-days-2025-09
 Conteúdos e atividades do VS Code Dev Days realizado no dia 06/09/2025.
 
+Conteúdos e atividades do VS Code Dev Days realizado no dia 06/09/2025. | VS Code, GitHub, Python, GitHub Codespaces, Docker, MCP, Docker MCP Hub...
+
 Acesse este conteúdo via QRCode e também nos apoiem 🙌, deixando um star ⭐ no repositório do GitHub:
 
 ![QRCode Conteúdo](img/qrcode-workshop.png)
