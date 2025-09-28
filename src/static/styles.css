@@ -22,10 +22,136 @@ header {
   background-color: #1a237e;
   color: white;
   border-radius: 5px;
+  position: relative;
 }
 
 header h1 {
   margin-bottom: 10px;
+}
+
+/* Authentication styles */
+.auth-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-icon {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-size: 20px;
+  padding: 8px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.user-icon:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.auth-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-size: 14px;
+}
+
+.logout-btn {
+  background: #c62828;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.logout-btn:hover {
+  background: #d32f2f;
+}
+
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 0;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  background: #1a237e;
+  color: white;
+  border-radius: 8px 8px 0 0;
+}
+
+.modal-header h3 {
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+}
+
+.close-btn:hover {
+  opacity: 0.7;
+}
+
+.modal-content form {
+  padding: 20px;
+}
+
+.modal-content .form-group {
+  margin-bottom: 15px;
+}
+
+.modal-content button[type="submit"] {
+  width: 100%;
+}
+
+/* Protected elements styling */
+.protected {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.protected.authenticated {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 main {
