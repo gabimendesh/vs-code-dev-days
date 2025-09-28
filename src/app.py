@@ -5,7 +5,9 @@ A super simple FastAPI application that allows students to view and sign up
 for extracurricular activities at Mergington High School.
 """
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Depends, status
+from fastapi.security import HTTPBasic, HTTPBasicCredentials
+import json
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse
 import os
@@ -13,6 +15,38 @@ from pathlib import Path
 
 app = FastAPI(title="Mergington High School API",
               description="API for viewing and signing up for extracurricular activities")
+
+current_dir = Path(__file__).parent
+# Autenticação básica
+security = HTTPBasic()
+USERS_FILE = os.path.join(current_dir, "users.json")
+def load_users():
+    if os.path.exists(USERS_FILE):
+        with open(USERS_FILE, "r") as f:
+            return json.load(f)
+    return {}
+
+def authenticate(credentials: HTTPBasicCredentials = Depends(security)):
+    users = load_users()
+    username = credentials.username
+    password = credentials.password
+    if username in users and users[username] == password:
+        return username
+    raise HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Credenciais inválidas",
+        headers={"WWW-Authenticate": "Basic"},
+    )
+# In-memory activity database
+## Exemplo de arquivo users.json:
+# {
+#   "professor1": "senha123",
+#   "admin": "adminpass"
+# }
+@app.post("/login")
+def login(credentials: HTTPBasicCredentials = Depends(security)):
+    username = authenticate(credentials)
+    return {"message": f"Login bem-sucedido para {username}"}
 
 # Mount the static files directory
 current_dir = Path(__file__).parent
