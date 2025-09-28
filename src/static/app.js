@@ -3,6 +3,107 @@ document.addEventListener("DOMContentLoaded", () => {
   const activitySelect = document.getElementById("activity");
   const signupForm = document.getElementById("signup-form");
   const messageDiv = document.getElementById("message");
+  
+  // Authentication elements
+  const userIcon = document.getElementById("user-icon");
+  const userStatus = document.getElementById("user-status");
+  const loginModal = document.getElementById("login-modal");
+  const loginForm = document.getElementById("login-form");
+  const loginMessage = document.getElementById("login-message");
+  const closeLogin = document.getElementById("close-login");
+  
+  // Authentication state
+  let authCredentials = null;
+  let currentUser = null;
+
+  // Show/hide login modal
+  function showLoginModal() {
+    loginModal.classList.remove("hidden");
+  }
+
+  function hideLoginModal() {
+    loginModal.classList.add("hidden");
+    loginForm.reset();
+    loginMessage.classList.add("hidden");
+  }
+
+  // Update UI based on auth state
+  function updateAuthUI() {
+    if (currentUser) {
+      userStatus.textContent = `Logged in as: ${currentUser}`;
+      userStatus.classList.remove("hidden");
+      userIcon.title = "Logout";
+    } else {
+      userStatus.classList.add("hidden");
+      userIcon.title = "Admin Login";
+    }
+  }
+
+  // Logout function
+  function logout() {
+    currentUser = null;
+    authCredentials = null;
+    updateAuthUI();
+    fetchActivities(); // Refresh to hide admin buttons
+  }
+
+  // Event listeners for auth
+  userIcon.addEventListener("click", () => {
+    if (currentUser) {
+      logout();
+    } else {
+      showLoginModal();
+    }
+  });
+
+  closeLogin.addEventListener("click", hideLoginModal);
+
+  // Close modal when clicking outside
+  loginModal.addEventListener("click", (e) => {
+    if (e.target === loginModal) {
+      hideLoginModal();
+    }
+  });
+
+  // Handle login form submission
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    
+    try {
+      const credentials = btoa(`${username}:${password}`);
+      const response = await fetch("/login", {
+        method: "POST",
+        headers: {
+          "Authorization": `Basic ${credentials}`
+        }
+      });
+      
+      const result = await response.json();
+      
+      if (response.ok) {
+        currentUser = username;
+        authCredentials = credentials;
+        updateAuthUI();
+        hideLoginModal();
+        fetchActivities(); // Refresh to show admin buttons
+        
+        loginMessage.textContent = result.message;
+        loginMessage.className = "success";
+      } else {
+        loginMessage.textContent = result.detail || "Login failed";
+        loginMessage.className = "error";
+        loginMessage.classList.remove("hidden");
+      }
+    } catch (error) {
+      loginMessage.textContent = "Login failed. Please try again.";
+      loginMessage.className = "error";
+      loginMessage.classList.remove("hidden");
+      console.error("Login error:", error);
+    }
+  });
 
   // Function to fetch activities from API
   async function fetchActivities() {
@@ -21,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const spotsLeft =
           details.max_participants - details.participants.length;
 
-        // Create participants HTML with delete icons instead of bullet points
+        // Create participants HTML with delete icons for authenticated users only
         const participantsHTML =
           details.participants.length > 0
             ? `<div class="participants-section">
@@ -30,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ${details.participants
                   .map(
                     (email) =>
-                      `<li><span class="participant-email">${email}</span><button class="delete-btn" data-activity="${name}" data-email="${email}">❌</button></li>`
+                      `<li><span class="participant-email">${email}</span>${currentUser ? `<button class="delete-btn" data-activity="${name}" data-email="${email}">❌</button>` : ''}</li>`
                   )
                   .join("")}
               </ul>
@@ -73,6 +174,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const activity = button.getAttribute("data-activity");
     const email = button.getAttribute("data-email");
 
+    if (!authCredentials) {
+      messageDiv.textContent = "Please login first to unregister students.";
+      messageDiv.className = "error";
+      messageDiv.classList.remove("hidden");
+      return;
+    }
+
     try {
       const response = await fetch(
         `/activities/${encodeURIComponent(
@@ -80,6 +188,9 @@ document.addEventListener("DOMContentLoaded", () => {
         )}/unregister?email=${encodeURIComponent(email)}`,
         {
           method: "DELETE",
+          headers: {
+            "Authorization": `Basic ${authCredentials}`
+          }
         }
       );
 
@@ -117,6 +228,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = document.getElementById("email").value;
     const activity = document.getElementById("activity").value;
 
+    if (!authCredentials) {
+      messageDiv.textContent = "Please login first to sign up students.";
+      messageDiv.className = "error";
+      messageDiv.classList.remove("hidden");
+      return;
+    }
+
     try {
       const response = await fetch(
         `/activities/${encodeURIComponent(
@@ -124,6 +242,9 @@ document.addEventListener("DOMContentLoaded", () => {
         )}/signup?email=${encodeURIComponent(email)}`,
         {
           method: "POST",
+          headers: {
+            "Authorization": `Basic ${authCredentials}`
+          }
         }
       );
 
@@ -154,6 +275,9 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error signing up:", error);
     }
   });
+
+  // Initialize auth UI
+  updateAuthUI();
 
   // Initialize app
   fetchActivities();
